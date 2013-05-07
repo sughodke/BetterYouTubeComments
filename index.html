@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>HTML5 MediaElement - YouTube</title>	
+
+  <script src="public/jquery.js"></script>	
+  <script src="public/mediaelement-and-player.min.js"></script>
+  <link rel="stylesheet" href="public/mediaelementplayer.min.css" />
+</head>
+<body>
+  <h1>MediaElementPlayer.js</h1>
+  <h2>YouTube Wrapper</h2>
+  <video id="player1" width="640" height="360" controls="control" preload="none">		
+    <source src="http://www.youtube.com/watch?v=nOEw9iiopwI&html5=True" type="video/youtube" />
+  </video>	
+  <span id="player1-mode"></span>
+
+
+<script>
+jQuery(document).ready(function($) {
+  var player = new MediaElementPlayer('#player1');
+  
+  console.log(player);
+});
+</script>
+
+</body>
+</html>
