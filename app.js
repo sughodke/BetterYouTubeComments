@@ -25,6 +25,7 @@ app.configure(function(){
 
 app.configure('development', function(){
   app.use(express.errorHandler());
+  app.locals.pretty = true;
 });
 
 app.get('/', routes.index);
