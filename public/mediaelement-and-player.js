@@ -822,9 +822,9 @@ mejs.MediaElementDefaults = {
 	// overrides the type specified, useful for dynamic instantiation
 	type: '',
 	// path to Flash and Silverlight plugins
-	pluginPath: mejs.Utility.getScriptPath(['mediaelement.js','mediaelement.min.js','mediaelement-and-player.js','mediaelement-and-player.min.js']),
+	pluginPath: mejs.Utility.getScriptPath(['/mediaelement.js','/mediaelement.min.js','/mediaelement-and-player.js','/mediaelement-and-player.min.js']),
 	// name of flash file
-	flashName: 'flashmediaelement.swf',
+	flashName: '/flashmediaelement.swf',
 	// streamer for RTMP streaming
 	flashStreamer: '',
 	// turns on the smoothing filter in Flash
@@ -834,7 +834,7 @@ mejs.MediaElementDefaults = {
 	// start query parameter sent to server for pseudo-streaming
 	pseudoStreamingStartQueryParam: 'start',
 	// name of silverlight file
-	silverlightName: 'silverlightmediaelement.xap',
+	silverlightName: '/silverlightmediaelement.xap',
 	// default if the <video width> is not specified
 	defaultVideoWidth: 480,
 	// default if the <video height> is not specified

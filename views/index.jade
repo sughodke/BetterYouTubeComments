@@ -2,11 +2,40 @@ extends layout
 
 block content
   h1 MediaElementPlayer.js
-  h2 YouTube Wrapper
-  video.player1(width="640",height="360",controls="control",preload="none")		
-    source(src="http://www.youtube.com/watch?v=nOEw9iiopwI&html5=True",type="video/youtube")
+  h2 YouTube Wrapper #{id}
+  video#player1(width="640",height="360",controls="control",preload="none")		
+    source(src="http://www.youtube.com/watch?v=#{id}",type="video/youtube")
   span.player1-mode
   script
     jQuery(document).ready(function($) {
       var player = new MediaElementPlayer('#player1');
+      console.log( player );
+
+      var ytid = $('source').attr( 'src' );
+      var yt = ytid.substring(ytid.indexOf('v=')+2);
+      console.log('/yt/'+yt);
+
+      $.getJSON('/yt/' + yt, function(json) {
+        var items = [];
+        $.each( json, function (k, d) {
+          items.push('<li>' + d['videotime'] + ' - <b>' + d['name'] + '</b> ' + d['content'] + '</li>');
+        });
+
+        $( "<ul/>", {
+          "class": "my-new-list",
+          html: items.slice(0,-1).join( "" )
+        }).appendTo( "body" );
+      });
+      /*
+      $.ajax({
+        type:'GET',
+        url: '/yt/' + yt,
+        data: {},
+        success: function(data) {
+         console.log(data); 
+        }, error: function(jqXHR, textStatus, err) {
+         console.log(err); 
+        }
+      });
+      */
     });

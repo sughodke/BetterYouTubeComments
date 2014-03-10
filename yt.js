@@ -33,13 +33,14 @@ function printComments(ytid,startidx) {
       console.log(error);
       console.log(data);
     }
+    //console.log(data);
 
     var comments = data['entry'];
     getGoodComments(comments);
 
     var res = {
       total: data['openSearch$totalResults']['$t'],
-      start: data['openSearch$startIndex']['$t'],
+      start: startidx, //data['openSearch$startIndex']['$t'],
       limit: data['openSearch$itemsPerPage']['$t']
     };
     
@@ -52,13 +53,15 @@ function printComments(ytid,startidx) {
   });
 }
 
-
-
-
-
-if (process.argv.length == 2) args = ['nOEw9iiopwI'];
-else {
-  args = process.argv.splice(2);
+function main() {
+  if (process.argv.length == 2) args = ['nOEw9iiopwI'];
+  else {
+    args = process.argv.splice(2);
+  }
+  
+  args.forEach(function(arg){ printComments(arg) });
 }
 
-args.forEach(function(arg){ printComments(arg) });
+if(require.main === module) {
+  main();
+}
